@@ -14,9 +14,7 @@ class Main extends StatelessWidget {
   final labelTitle = 'Enter the title of a book';
   final getRecs = 'Get Recommendations';
   final edgeInsets = 20.0;
-
-
-  aksdlfjadsfjlkasj;fksdk;faskld;
+  
   Recommend r = Recommend();
 
   @override
