@@ -7,14 +7,14 @@ void main() => runApp(new MaterialApp(home: new Main()));
 
 class Main extends StatelessWidget {
 
-  String author = '';
-  String title = '';
+  String input = '';
 
   // constants
   final labelTitle = 'Enter the title of a book';
-  final getRecs = 'Get Recommendations';
+  final getBookRecs = 'Get Book Recommendations';
+  final getAuthorRecs = 'Get Author Recommendations';
   final edgeInsets = 20.0;
-  
+
   Recommend r = Recommend();
 
   @override
@@ -33,7 +33,7 @@ class Main extends StatelessWidget {
                     labelText: labelTitle,
                   ),
                   onChanged: (val) {
-                    title = val;
+                    input = val;
                   },
                 ),
                 TextButton(
@@ -41,9 +41,10 @@ class Main extends StatelessWidget {
                     primary: Colors.blue,
                   ),
                   onPressed: () async {
-                    var body = [title];
+                    var body = [input];
 
                     var res = await r.RecommendBooks(body);
+
 
                     Navigator.push(
                       context,
@@ -52,7 +53,25 @@ class Main extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text(getRecs),
+                  child: Text(getBookRecs),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.purple,
+                  ),
+                  onPressed: () async {
+                    var body = [input];
+
+                    var res = await r.RecommendAuthors(body);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder:(context) => BookRecs(res:res[0])
+                      ),
+                    );
+                  },
+                  child: Text(getAuthorRecs),
                 ),
               ],
             ),
