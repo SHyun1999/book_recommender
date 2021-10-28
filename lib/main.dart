@@ -1,8 +1,7 @@
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'bookrecs.dart';
-import 'Recommend.dart';
+import 'recommend.dart';
 
 void main() => runApp(new MaterialApp(home: new Main()));
 
@@ -11,13 +10,20 @@ class Main extends StatelessWidget {
   String author = '';
   String title = '';
 
+  // constants
+  final labelTitle = 'Enter the title of a book';
+  final getRecs = 'Get Recommendations';
+  final edgeInsets = 20.0;
+
+
+  aksdlfjadsfjlkasj;fksdk;faskld;
   Recommend r = Recommend();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.all(20.0),
+        margin: EdgeInsets.all(edgeInsets),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -26,14 +32,16 @@ class Main extends StatelessWidget {
               children: <Widget>[
                 TextField(
                   decoration: InputDecoration(
-                    labelText: 'Enter title of a book',
+                    labelText: labelTitle,
                   ),
                   onChanged: (val) {
                     title = val;
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.blue,
+                  ),
                   onPressed: () async {
                     var body = [title];
 
@@ -46,7 +54,7 @@ class Main extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text("Get Recommendations"),
+                  child: Text(getRecs),
                 ),
               ],
             ),
