@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "471254716878",
+    "project_id": "book-recommender-login",
+    "storage_bucket": "book-recommender-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471254716878:android:0c65b9e6bcf75891b95b9f",
+        "android_client_info": {
+          "package_name": "com.example.book_review"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471254716878-3ffdvd49fiucj495ni13hkqr9rqsg8eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7v8k9qW6mP6mcc_awEIoYVRrQXpWTvT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471254716878-3ffdvd49fiucj495ni13hkqr9rqsg8eq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
