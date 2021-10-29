@@ -1,9 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'bookrecs.dart';
 import '../recommend.dart';
-import '../options.dart';
+import 'options.dart';
 
 class HomePage extends StatelessWidget{
   String input = '';

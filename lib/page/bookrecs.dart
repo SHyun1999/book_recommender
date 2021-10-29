@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'individualbook.dart';
 
 class BookRecs extends StatelessWidget {
