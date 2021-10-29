@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-
+import 'individualbook.dart';
 
 
 class BookRecs extends StatelessWidget {
@@ -21,6 +21,12 @@ class BookRecs extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(res[index]),
+            onTap: () {Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder:(context) => IndividualBook(book:res[index])
+              ),
+            );}
           );
         },
       ),

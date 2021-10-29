@@ -20,6 +20,9 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Book recommender GOD'),
+      ),
       body: Container(
         margin: EdgeInsets.all(edgeInsets),
         child: Center(
