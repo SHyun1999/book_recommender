@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'utils.dart';
+import '../utils.dart';
 
 class IndividualBook extends StatelessWidget {
 

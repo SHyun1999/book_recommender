@@ -1,86 +1,25 @@
-import 'dart:convert';
+import 'package:book_review/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'bookrecs.dart';
-import 'recommend.dart';
+import 'package:provider/provider.dart';
+import 'page/home_page.dart';
 
-void main() => runApp(new MaterialApp(home: new Main()));
+void main() => runApp(MaterialApp(home:  Main()));
 
 class Main extends StatelessWidget {
-
-  String input = '';
-
-  // constants
-  final labelTitle = 'Enter the title of a book';
-  final getBookRecs = 'Get Book Recommendations';
-  final getAuthorRecs = 'Get Author Recommendations';
-  final edgeInsets = 20.0;
-
-  Recommend r = Recommend();
+  const Main({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Book recommender GOD'),
-      ),
-      body: Container(
-        margin: EdgeInsets.all(edgeInsets),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: labelTitle,
-                  ),
-                  onChanged: (val) {
-                    input = val;
-                  },
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.blue,
-                  ),
-                  onPressed: () async {
-                    var body = [input];
+  Widget build(BuildContext context)=>ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    builder: (context, _){
+      final themeProvider = Provider.of<ThemeProvider>(context);
+      return MaterialApp(
+        themeMode: themeProvider.themeMode,
+        theme: MyThemes.lightTheme,
+        darkTheme: MyThemes.darkTheme,
+        home: HomePage(),
+      );
+    }
+  );
 
-                    var res = await r.RecommendBooks(body);
-
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder:(context) => BookRecs(res:res)
-                      ),
-                    );
-                  },
-                  child: Text(getBookRecs),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.purple,
-                  ),
-                  onPressed: () async {
-                    var body = [input];
-
-                    var res = await r.RecommendAuthors(body);
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder:(context) => BookRecs(res:res[0])
-                      ),
-                    );
-                  },
-                  child: Text(getAuthorRecs),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
