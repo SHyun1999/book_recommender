@@ -45,7 +45,6 @@ dependencies:
   rflutter_alert: ^2.0.4
   url_launcher: ^6.0.12
   provider: ^6.0.1
-  splashscreen: ^1.3.5
   auth_buttons: ^1.0.1+4
 
 
@@ -75,6 +74,7 @@ flutter:
   assets:
     - assets/Amazon-Logo.png
     - assets/Gr-Logo.png
+    - assets/user.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,7 +1,6 @@
 import 'package:book_review/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'page/home_page.dart';
 import 'page/login.dart';
 
 void main() => runApp(MaterialApp(home:  Main()));

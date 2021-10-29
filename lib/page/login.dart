@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:splashscreen/splashscreen.dart';
-import 'package:auth_buttons/auth_buttons.dart';
+import 'home_page.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -11,16 +10,7 @@ class Login extends StatefulWidget {
 class _MyAppStateS extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 7,
-      backgroundColor: Colors.white,
-      image: Image.asset('assets/logo.png'),
-      loaderColor: Colors.lightGreen,
-      photoSize: 150.0,
-      navigateAfterSeconds: MyApp1(),
-      gradientBackground: LinearGradient(
-          colors: [Colors.lightBlue, Colors.lightGreen]),
-    );
+    return MyApp1();
   }
 }
 
@@ -32,9 +22,10 @@ class MyApp1 extends StatefulWidget {
 }
 
 class _MyAppState1 extends State<MyApp1> {
+
   bool _isLoggedIn = false;
 
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
   _login() async {
     try {
@@ -54,6 +45,7 @@ class _MyAppState1 extends State<MyApp1> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -68,31 +60,28 @@ class _MyAppState1 extends State<MyApp1> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(150.0)),
+                decoration: const BoxDecoration(
+                   borderRadius: BorderRadius.all( Radius.circular(150.0)),
                   color: Colors.green,
                 ),
                 height: 150,
                 width: 150,
-                child: CircleAvatar(
-                  backgroundColor: Colors.lightBlue,
-                  // backgroundImage:
-                  //NetworkImage(_googleSignIn.currentUser.photoUrl),
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage("assets/user.png")
+
                 ),
               ),
-              Text("Welcome! ",
+              const Text("Welcome! ",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 40.0,
                   )),
-              Text("Margarito"/*_googleSignIn.currentUser.displayName*/,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                  )),
-              RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                color: Colors.purple[300],
+
+
+              Text(_googleSignIn.currentUser!.displayName.toString()),
+              ElevatedButton(
+
+
                 child: Text("Logout",
                     style: TextStyle(
                         fontSize: 35.0, color: Colors.grey[350])),
@@ -101,15 +90,20 @@ class _MyAppState1 extends State<MyApp1> {
                 },
               ),
               Center(
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
-                  color: Colors.green[300],
+                child: ElevatedButton(
+
                   child: Text('Main menu',
                       style: TextStyle(
                           fontSize: 35.0, color: Colors.grey[300])),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/2');
+                    print(_googleSignIn.currentUser!.photoUrl.toString());
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder:(context) => HomePage()
+
+                      ),
+                    );
                   },
                 ),
               ),
@@ -119,17 +113,13 @@ class _MyAppState1 extends State<MyApp1> {
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: <Widget>[
-              Image.asset('assets/logo.png'),
               Container(
-
-                child: GoogleSignInButton(
-                  onPressed: () {
-                    _login();
-                  },
-                  darkMode: true,
+                child: ElevatedButton(onPressed: ()=> _login(),
+                  child: const Text("SIGN IN"),
+                ),
+                  //darkMode: true,
                   // default: false}
                 ),
-              ),
             ],
           ),
         ),
