@@ -18,13 +18,13 @@ class BookRecs extends StatelessWidget {
         itemCount: res.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(res[index]),
-            onTap: () {Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder:(context) => IndividualBook(book:res[index])
-              ),
-            );}
+              title: Text(res[index]),
+              onTap: () {Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder:(context) => IndividualBook(book:res[index])
+                ),
+              );}
           );
         },
       ),

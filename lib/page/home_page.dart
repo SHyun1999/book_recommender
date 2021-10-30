@@ -7,9 +7,9 @@ class HomePage extends StatelessWidget{
   String input = '';
 
   // constants
-  final labelTitle = 'Enter the title of a book';
   final getBookRecs = 'Get Book Recommendations';
   final getAuthorRecs = 'Get Author Recommendations';
+  final labelTitle = 'Enter the title of a book';
   final edgeInsets = 20.0;
   final settings = 'Settings';
 
@@ -54,7 +54,6 @@ class HomePage extends StatelessWidget{
                   ),
                   onPressed: () async {
                     var body = [input];
-
                     var res = await r.RecommendBooks(body);
 
 
@@ -73,8 +72,8 @@ class HomePage extends StatelessWidget{
                   ),
                   onPressed: () async {
                     var body = [input];
-
                     var res = await r.RecommendAuthors(body);
+
 
                     Navigator.push(
                       context,

@@ -15,7 +15,7 @@ class Main extends StatelessWidget {
       final themeProvider = Provider.of<ThemeProvider>(context);
       return MaterialApp(
         themeMode: themeProvider.themeMode,
-        theme: MyThemes.lightTheme,
+        theme:MyThemes.lightTheme,
         darkTheme: MyThemes.darkTheme,
         home: Login(),
       );

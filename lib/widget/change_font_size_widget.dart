@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChangeFontSizeWidget extends StatelessWidget{
+  const ChangeFontSizeWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton(
+    return PopupMenuButton<int>(
+        onSelected:(item)=>onSelected(item),
         itemBuilder:(context)=>[
           const PopupMenuItem(
             child: Text("Small"),
@@ -19,6 +22,15 @@ class ChangeFontSizeWidget extends StatelessWidget{
         ]
 
     );
+  }
+
+  void onSelected(int item){
+    switch(item){
+      case 1: break;
+      case 2: break;
+      case 3: break;
+
+    }
   }
 
 }
