@@ -3,10 +3,19 @@ import 'bookrecs.dart';
 import '../recommend.dart';
 import 'options.dart';
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatefulWidget{
+
+  HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   String input = '';
 
-  // constants
+
+  //constants
   final getBookRecs = 'Get Book Recommendations';
   final getAuthorRecs = 'Get Author Recommendations';
   final labelTitle = 'Enter the title of a book';
@@ -57,12 +66,9 @@ class HomePage extends StatelessWidget{
                     var res = await r.RecommendBooks(body);
 
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder:(context) => BookRecs(res:res)
-                      ),
-                    );
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder:(_)=> BookRecs(res:res)
+                    ));
                   },
                   child: Text(getBookRecs),
                 ),
@@ -74,13 +80,10 @@ class HomePage extends StatelessWidget{
                     var body = [input];
                     var res = await r.RecommendAuthors(body);
 
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder:(_)=> BookRecs(res:res[0])
+                    ));
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder:(context) => BookRecs(res:res[0])
-                      ),
-                    );
                   },
                   child: Text(getAuthorRecs),
                 ),
@@ -95,12 +98,9 @@ class HomePage extends StatelessWidget{
   void onSelected(BuildContext context, int item){
     switch(item){
       case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder:(context) => OptionScreen()
-          ),
-        );
+        Navigator.of(context).push(MaterialPageRoute(
+            builder:(_)=> OptionScreen()
+        ));
     }
   }
 }

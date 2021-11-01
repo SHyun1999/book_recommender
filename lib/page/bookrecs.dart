@@ -24,7 +24,7 @@ class BookRecs extends StatelessWidget {
             child:Card(child:ListTile(
                 trailing: const Icon(bookIcon),
                 title: Text(res[index],
-                style: const TextStyle(fontSize: 20),),
+                style: const TextStyle(fontSize: 17),),
                 onTap: () { Navigator.of(context).push(PageTransition(
                     child: IndividualBook(book:res[index]),
                     type:PageTransitionType.bottomToTop,

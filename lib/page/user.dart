@@ -71,12 +71,9 @@ class _User extends State<User> {
                       style: TextStyle(
                           fontSize: 35.0, color: Colors.grey[300])),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder:(context) => HomePage()
-                      ),
-                    );
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder:(_)=> HomePage()
+                    ));
                   },
                 ),
               ),

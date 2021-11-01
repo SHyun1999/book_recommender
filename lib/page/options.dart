@@ -24,7 +24,7 @@ class OptionScreen extends StatelessWidget {
           Card(
             child:ListTile(
               title: Text(fs),
-              trailing: ChangeFontSizeWidget(),
+              trailing: const ChangeFontSizeWidget(),
             ),
           ),
         ]
