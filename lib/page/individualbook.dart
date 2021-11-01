@@ -1,3 +1,4 @@
+import 'package:book_review/widget/inkwell_widget.dart';
 import 'package:flutter/material.dart';
 import '../utils.dart';
 
@@ -20,12 +21,7 @@ class IndividualBook extends StatelessWidget {
         child: Column(
 
           children: [
-            ElevatedButton(
-            child: Image(image: gr),
-
-            onPressed: () =>
-                Utils.openLink(url: "https://www.goodreads.com/search?q=$book&qid=")
-          ),
+            InkwellWidget(book:book),
             Text("LOREM IPSUM"),
 
             IconButton(
