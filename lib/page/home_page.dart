@@ -67,7 +67,8 @@ class _HomePageState extends State<HomePage> {
 
 
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder:(_)=> BookRecs(res:res)
+                        builder:(_)=> BookRecs(res:res[0], ratings:res[1],
+                            pages:res[2],langs:res[3])
                     ));
                   },
                   child: Text(getBookRecs),
@@ -80,8 +81,11 @@ class _HomePageState extends State<HomePage> {
                     var body = [input];
                     var res = await r.RecommendAuthors(body);
 
+
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder:(_)=> BookRecs(res:res[0])
+
+                      builder:(_)=> BookRecs(res:res[0],ratings:res[1],
+                      pages:res[2], langs: res[3])
                     ));
 
                   },

@@ -6,13 +6,15 @@ class InkwellWidget extends StatelessWidget{
 
   const InkwellWidget({Key? key, required this.book}) : super(key: key);
 
+  final gr = const AssetImage("assets/Gr-Logo.png");
+
   @override
   Widget build(BuildContext context) {
 
 
     return InkWell(
         splashColor: Colors.white.withOpacity(0.6),
-        child: Ink.image(image:AssetImage("assets/Gr-Logo.png"),
+        child: Ink.image(image:gr,
         height:85,
         width: double.infinity,
         fit:BoxFit.cover,),
@@ -22,6 +24,5 @@ class InkwellWidget extends StatelessWidget{
 
 
   }
-
 
 }
