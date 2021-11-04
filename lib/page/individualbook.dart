@@ -7,9 +7,9 @@ import 'package:book_review/widget/rating_bar_widget.dart';
 class IndividualBook extends StatefulWidget {
 
   const IndividualBook({Key? key, required this.book, required this.rating,
-    required this.pages, required this.lang}) : super(key: key);
+    required this.revs, required this.lang}) : super(key: key);
 
-  final int pages;
+  final int revs;
   final String lang;
   final String book;
   final double rating;
@@ -31,13 +31,13 @@ class _IndividualBookState extends State<IndividualBook>
   void initState(){
     super.initState();
 
-    animationController = AnimationController(duration:const Duration(seconds: 2), vsync: this);
+    animationController = AnimationController(duration:const Duration(seconds: 3), vsync: this);
 
-    animation = IntTween(begin:0, end: widget.pages).animate(
+    animation = IntTween(begin:0, end: widget.revs).animate(
         animationController);
 
     animationController.forward();
-    
+
   }
 
   @override
@@ -50,17 +50,34 @@ class _IndividualBookState extends State<IndividualBook>
       body: Center(
         child: Column(
 
-          children: [
+          children: <Widget>[
             InkwellWidget(book:widget.book),
+            SizedBox(height: 25),
 
             RatingBarWidget(rating: widget.rating),
+            SizedBox(height: 25),
 
             Text(widget.lang),
+            SizedBox(height: 25),
             AnimatedBuilder(
               animation: animationController,
                 builder:(BuildContext context, _){
-                  return Text(animation.value.toString());
+                  return RichText(
+                      text: TextSpan(
+                        style: TextStyle(fontSize:20),
+                    children: [
+                      TextSpan(text: animation.value.toString()),
+                      const WidgetSpan(
+                        child: Icon(Icons.groups, size:20),
+
+                      ),
+                      const TextSpan(text: ' have read this. Be the next!'),
+                    ]
+                  ));
+
+
                 }),
+            SizedBox(height: 25),
 
 
             IconButton(

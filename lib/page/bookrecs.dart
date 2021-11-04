@@ -5,11 +5,11 @@ import 'package:page_transition/page_transition.dart';
 class BookRecs extends StatelessWidget {
 
   const BookRecs({Key? key, required this.res, required this.ratings,
-  required this.pages, required this.langs}) : super(key: key);
+  required this.revs, required this.langs}) : super(key: key);
 
   final List<dynamic> res;
   final List<dynamic> ratings;
-  final List<dynamic> pages;
+  final List<dynamic> revs;
   final List<dynamic> langs;
   static const IconData bookIcon = Icons.book;
 
@@ -29,14 +29,12 @@ class BookRecs extends StatelessWidget {
                 trailing: const Icon(bookIcon),
                 title: Text(res[index],
                 style: const TextStyle(fontSize: 17),),
-                subtitle: Text(ratings[index]),
+                subtitle: Text(ratings[index].toString()),
 
                 onTap: () { Navigator.of(context).push(PageTransition(
+                    child: IndividualBook(book:res[index], rating:ratings[index],
+                    revs: int.parse(revs[index]),lang:langs[index]),
 
-
-                    child: IndividualBook(book:res[index], rating:double.parse(ratings[index]),
-                    pages: int.parse(pages[index]),lang:langs[index]),
-                    //pages:pages[index]),
 
                     type:PageTransitionType.bottomToTop,
                     duration:(const Duration(milliseconds:600)),
